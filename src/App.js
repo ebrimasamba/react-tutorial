@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
+import Fruits from "./components/Fruits";
+import Footballer from "./components/Footballer";
+import Todos from "./components/Todos";
 
-function App() {
+const App = () => {
+  const fruits = [];
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount(count + 1);
+    console.log(count);
+  };
+
+  const decrement = () => {
+    console.log("subtracting");
+    setCount(count - 1);
+    console.log(count);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={decrement}>-</button>
+      <h1>{count}</h1>
+      <button onClick={increment}>+</button>
+
+      <Fruits />
+      <Footballer />
+      <Todos />
     </div>
   );
-}
+};
 
 export default App;
